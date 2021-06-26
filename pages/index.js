@@ -3,11 +3,14 @@ import axios from 'axios';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import StatePop from '../components/StatePop';
 
 export default function Home() {
 
   const [items, setItems] = useState([]);
+  const [dataItems, setDataItems] = useState([]);
   const [chartItems, setChartItems] = useState([]);
+  // const [test, setTest] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +19,14 @@ export default function Home() {
       );
       // console.log(response.data);
       setItems(response.data);
+    };
+
+    const fetchConData = async () => {
+      const response = await axios.get(
+        'https://api.covid19api.com/live/country/south-africa/status/confirmed'
+      );
+      // console.log(response.data);
+      setDataItems(response.data);
     };
 
     const fetchChartData = async () => {
@@ -27,15 +38,32 @@ export default function Home() {
       // console.log(passData.reverse());
 
       setChartItems(passData.reverse());
+
+
+      // var requestOptions = {
+      //   method: 'GET',
+      //   redirect: 'follow'
+      // };
+
+      // fetch("https://covidtracking.com/api/states/daily", requestOptions)
+      //   .then(response => response.text())
+      //   .then(result => setTest(result))
+      //   // .then(result => console.log(result))
+      //   .catch(error => console.log('error', error));
+
     };
 
+
+
     fetchChartData();
+    fetchConData()
     fetchData();
 
   }, [])
 
-  console.log(items);
-  console.log(chartItems);
+  // console.log(items);
+  // console.log(chartItems);
+  // console.log(test);
 
   return (
     <div className={styles.container}>
@@ -46,6 +74,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Covid-19 Tracker</h1>
+        <StatePop results={items} dataRes={dataItems} />
       </main>
     </div>
   )
