@@ -21,12 +21,12 @@ const StatePop = (props) => {
         const stTarget = e.target.value;
         loopStates.map((state) => {
             if (stTarget === state.Country) {
-                setCovid(state);
+                setCovid(state.Country);
             }
         });
     }
 
-    // console.log(props.results)
+    console.log(covid)
 
     return (
         <div className="state-dropdown">
