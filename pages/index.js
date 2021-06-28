@@ -8,7 +8,7 @@ import StatePop from '../components/StatePop';
 export default function Home() {
 
   const [items, setItems] = useState([]);
-  const [dataItems, setDataItems] = useState([]);
+  // const [dataItems, setDataItems] = useState([]);
   const [chartItems, setChartItems] = useState([]);
   // const [test, setTest] = useState([]);
 
@@ -56,15 +56,15 @@ export default function Home() {
 
   }, [])
 
-  const fetchConData = async (passCountry) => {
-    console.log(passCountry)
-    const response = await axios.get(
-      'https://api.covid19api.com/live/country/south-africa/status/confirmed'
-    );
-    // console.log(response.data);
-    setDataItems(response.data);
+  // const fetchConData = async (passCountry) => {
+  //   console.log(passCountry)
+  //   const response = await axios.get(
+  //     'https://api.covid19api.com/live/country/south-africa/status/confirmed'
+  //   );
+  //   // console.log(response.data);
+  //   setDataItems(response.data);
 
-  };
+  // };
 
   // console.log(items);
   // console.log(chartItems);
