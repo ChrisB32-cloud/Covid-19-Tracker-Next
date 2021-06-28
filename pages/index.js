@@ -21,13 +21,7 @@ export default function Home() {
       setItems(response.data);
     };
 
-    const fetchConData = async () => {
-      const response = await axios.get(
-        'https://api.covid19api.com/live/country/south-africa/status/confirmed'
-      );
-      // console.log(response.data);
-      setDataItems(response.data);
-    };
+
 
     const fetchChartData = async () => {
       const results = await axios.get(
@@ -55,11 +49,22 @@ export default function Home() {
 
 
 
+
     fetchChartData();
-    fetchConData()
+    // fetchConData()
     fetchData();
 
   }, [])
+
+  const fetchConData = async (passCountry) => {
+    console.log(passCountry)
+    const response = await axios.get(
+      'https://api.covid19api.com/live/country/south-africa/status/confirmed'
+    );
+    // console.log(response.data);
+    setDataItems(response.data);
+
+  };
 
   // console.log(items);
   // console.log(chartItems);
@@ -74,7 +79,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Covid-19 Tracker</h1>
-        <StatePop results={items} dataRes={dataItems} />
+        <StatePop results={items} dataRes={dataItems} fetchConData={fetchConData} />
       </main>
     </div>
   )
