@@ -3,7 +3,7 @@ import axios from 'axios';
 // import PopulateField from './PopulateField';
 
 const StatePop = (props) => {
-    const [covid, setCovid] = useState([]);
+    const [covid, setCovid] = useState(null);
     const [dataItems, setDataItems] = useState([]);
     const loopStates = props.results;
 
@@ -22,11 +22,11 @@ const StatePop = (props) => {
 
         const fetchConData = async () => {
             // console.log(passCountry)
-            const response = await axios.get(
-                `https://api.covid19api.com/live/country/${covid}/status/confirmed`
-            );
+            // const response = await axios.get(
+            //     `https://api.covid19api.com/live/country/${covid}/status/confirmed`
+            // );
             // console.log(response.data);
-            setDataItems(response.data);
+            // setDataItems(response.data);
 
         };
 
@@ -49,8 +49,8 @@ const StatePop = (props) => {
 
 
 
-    // console.log(covid)
-    console.log(dataItems)
+    console.log(covid)
+    // console.log(dataItems)
 
     return (
         <div className="state-dropdown">

@@ -8,7 +8,7 @@ import StatePop from '../components/StatePop';
 export default function Home() {
 
   const [items, setItems] = useState([]);
-  // const [dataItems, setDataItems] = useState([]);
+  const [dataItems, setDataItems] = useState([]);
   const [chartItems, setChartItems] = useState([]);
   // const [test, setTest] = useState([]);
 
@@ -19,7 +19,9 @@ export default function Home() {
       );
       // console.log(response.data);
       setItems(response.data);
+
     };
+
 
 
 
@@ -27,23 +29,11 @@ export default function Home() {
       const results = await axios.get(
         'https://api.covid19api.com/total/country/united-states'
       );
-      // console.log(results.data);
       const passData = await results.data;
-      // console.log(passData.reverse());
 
       setChartItems(passData.reverse());
 
 
-      // var requestOptions = {
-      //   method: 'GET',
-      //   redirect: 'follow'
-      // };
-
-      // fetch("https://covidtracking.com/api/states/daily", requestOptions)
-      //   .then(response => response.text())
-      //   .then(result => setTest(result))
-      //   // .then(result => console.log(result))
-      //   .catch(error => console.log('error', error));
 
     };
 
@@ -79,7 +69,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Covid-19 Tracker</h1>
-        <StatePop results={items} dataRes={dataItems} fetchConData={fetchConData} />
+        <StatePop results={items} dataRes={dataItems} />
       </main>
     </div>
   )
