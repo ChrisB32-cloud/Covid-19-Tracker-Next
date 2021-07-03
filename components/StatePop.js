@@ -19,16 +19,16 @@ const StatePop = (props) => {
     };
 
     function GrabSt(e) {
-
         const fetchConData = async () => {
             // console.log(passCountry)
-            // const response = await axios.get(
-            //     `https://api.covid19api.com/live/country/${covid}/status/confirmed`
-            // );
-            // console.log(response.data);
+            const response = await axios.get(
+                `https://api.covid19api.com/live/country/${covid}/status/confirmed`
+            );
+            console.log(response.data);
             // setDataItems(response.data);
 
         };
+
 
         e.preventDefault();
         const stTarget = e.target.value;
@@ -38,6 +38,9 @@ const StatePop = (props) => {
                 fetchConData()
             }
         });
+
+
+
 
         // try {
         //     props.fetchConData(covid)
