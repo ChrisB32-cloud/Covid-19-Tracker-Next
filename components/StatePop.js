@@ -6,6 +6,10 @@ const StatePop = (props) => {
     const [covid, setCovid] = useState(null);
     const [dataItems, setDataItems] = useState([]);
     const loopStates = props.results;
+    let today = new Date();
+    let day = today.getDate()
+    let month = today.getMonth()
+    let year = today.getFullYear()
 
     // console.log(loopStates);
 
@@ -22,9 +26,9 @@ const StatePop = (props) => {
         const fetchConData = async () => {
             // console.log(passCountry)
             const response = await axios.get(
-                `https://api.covid19api.com/live/country/${covid}/status/confirmed`
+                `https://api.covid19api.com/live/country/${covid}/status/confirmed/date/${year}-${month}-${day}T00:00:00Z`
             );
-            console.log(response.data);
+            console.log(response.data[0]);
             // setDataItems(response.data);
 
         };
@@ -53,6 +57,7 @@ const StatePop = (props) => {
 
 
     console.log(covid)
+    // console.log(year, month, day)
     // console.log(dataItems)
 
     return (
