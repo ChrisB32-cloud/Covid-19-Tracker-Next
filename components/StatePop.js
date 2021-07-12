@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import PopulateField from './PopulateField';
+import PopulateField from './PopulateField';
 
 const StatePop = (props) => {
     const [covid, setCovid] = useState(null);
@@ -28,8 +28,8 @@ const StatePop = (props) => {
             const response = await axios.get(
                 `https://api.covid19api.com/live/country/${covid}/status/confirmed/date/${year}-${month}-${day}T00:00:00Z`
             );
-            console.log(response.data[0]);
-            // setDataItems(response.data);
+            // console.log(response.data[0]);
+            setDataItems(response.data[0]);
 
         };
 
@@ -56,9 +56,9 @@ const StatePop = (props) => {
 
 
 
-    console.log(covid)
+    // console.log(covid)
     // console.log(year, month, day)
-    // console.log(dataItems)
+    console.log(dataItems)
 
     return (
         <div className="state-dropdown">
@@ -67,7 +67,7 @@ const StatePop = (props) => {
             // //
             </select>
 
-            {/* <PopulateField feilds={covid} /> */}
+            <PopulateField feilds={dataItems} />
         </div>
     );
 };

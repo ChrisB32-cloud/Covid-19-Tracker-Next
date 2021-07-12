@@ -24,10 +24,16 @@ const PopulateField = (props) => {
     //     }
     // };
 
-    const ShowStateData = () => {
-        // return <CheckFields />;
-    };
-    return <ShowStateData />;
+    // const ShowStateData = () => {
+    //     return <CheckFields />;
+    // };
+    // return <ShowStateData />;
+    console.log(props.feilds);
+    return (
+        <div>
+            <h1>Cases in Country</h1>
+        </div>
+    )
 };
 
 export default PopulateField;
