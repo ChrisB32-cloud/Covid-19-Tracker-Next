@@ -63,9 +63,9 @@ const StatePop = (props) => {
 
 
 
-    console.log(covid)
+    // console.log(covid)
     // console.log(year, month, day)
-    console.log(dataItems)
+    // console.log(dataItems)fetchConData()
 
     return (
         <div className="state-dropdown">
