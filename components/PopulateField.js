@@ -9,7 +9,8 @@ const PopulateField = (props) => {
     // const mortRate = mortRatePre.toFixed(2);
 
     const CheckFields = () => {
-        if (props.feilds === []) {
+        if (!Country) {
+            // if (props.feilds === []) {
             return <h1>Select Country for details</h1>;
         } else {
             // console.log('value changed to: ', state);

@@ -3,7 +3,8 @@ import axios from 'axios';
 import PopulateField from './PopulateField';
 
 const StatePop = (props) => {
-    const [covid, setCovid] = useState('Sweden');
+    const [covid, setCovid] = useState('');
+    // const [covid, setCovid] = useState('Sweden');
     const [dataItems, setDataItems] = useState([]);
     const loopStates = props.results;
     let today = new Date();
@@ -24,6 +25,9 @@ const StatePop = (props) => {
 
     const fetchConData = async () => {
         // console.log(passCountry)
+        if (covid === "undefined") {
+            setCovid('Sweden')
+        }
         const response = await axios.get(
             `https://api.covid19api.com/live/country/${covid}/status/confirmed/date/${year}-${month}-${day}T00:00:00Z`
         );
@@ -44,8 +48,7 @@ const StatePop = (props) => {
         const stTarget = e.target.value;
         loopStates.map((state) => {
             if (stTarget === state.Country) {
-                setCovid(state.Country);
-
+                setCovid(state.Slug);
             }
         });
 
@@ -64,6 +67,7 @@ const StatePop = (props) => {
 
 
     // console.log(covid)
+    // console.log(props)
     // console.log(year, month, day)
     // console.log(dataItems)fetchConData()
 
